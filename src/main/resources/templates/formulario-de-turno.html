@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Barber shop</title>
+
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+</head>
+<body>
+
+    <ul>
+        <li> <a th:href="@{/home/index}">Home</a></li>
+        <li> <a th:href="@{/barber-shop/turnos}">Turnos</a></li>
+        <li> <a th:href="@{/home/nosotros-info}">Nosotros</a></li>
+        <li> <a th:href="@{/home/contacto-info}">Contacto</a></li>
+    </ul>
+
+    <div>
+        <form th:action="@{/barber-shop/procesar-formulario-turno}"
+              th:object="${turno}" method="POST">
+
+            <span> selecciona el dia : </span>
+
+            <select th:field="*{dia}">
+
+                <option th:each="fecha : ${fechas}"
+                        th:value="${fecha}"
+                        th:text="${#temporals.format(fecha, 'EEE dd-MM-yyyy')}" />
+
+            </select>
+
+            <br>
+
+            <span> selecciona el horario : </span>
+
+            <select th:field="*{horario}">
+
+                <option th:each="tmp : ${horarios}" th:value="${tmp}" th:text="${tmp}"  />
+
+            </select>
+
+            <br>
+
+            <span> ingresa tu nombre : (mínimo,4 caracteres) </span>
+
+            <input type="text" th:field="*{nombreUsuario}" th:value="${nombreUsuario}" placeholder="nombre">
+
+            <!-- add error message (if present) -->
+            <span th:if="${#fields.hasErrors('nombreUsuario')}"
+                  th:errors="*{nombreUsuario}"
+                  class="error"></span>
+
+            <br>
+
+            <span> ingresa un número de contacto : (ejemplo : 341 2 555 555) </span>
+
+            <input type="text" th:field="*{numeroContacto}" th:value="${numeroContacto}" placeholder="número de cel">
+
+            <!-- add error message (if present) -->
+            <span th:if="${#fields.hasErrors('numeroContacto')}"
+                  th:errors="*{numeroContacto}"
+                  class="error"></span>
+
+            <br><br>
+
+            <button>Enviar</button>
+
+        </form>
+    </div>
+
+</body>
+</html>

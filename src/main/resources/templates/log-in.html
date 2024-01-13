@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Log in</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+</head>
+<body>
+
+    <a th:href="@{/home/index}">Volver</a>
+
+    <br><br>
+
+    <h3>Log in</h3>
+
+    <div>
+        <form action="#" th:action="@{/authenticateAdmin}" method="POST">
+            <p>
+                <!-- spring security looks for this field -> name="username" -->
+                <!-- spring security filters will read form data and authenticate the user -->
+                username : <input type="text" name="username">
+            </p>
+
+            <p>
+                password : <input type="text" name="password">
+            </p>
+
+            <input type="submit" value="log-in">
+
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Panel de turnos reservados</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+</head>
+<body>
+
+    <h3 >Panel de turnos reservados</h3>
+
+    <table>
+        <thead>
+        <tr>
+            <th>dia</th>
+            <th>horario</th>
+            <th>nombre cliente</th>
+            <th>numero de contacto cliente</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr th:each="tmp : ${turnos}">
+
+            <td th:text="${tmp.dia}"/>
+            <td th:text="${tmp.horario}"/>
+            <td th:text="${tmp.nombreUsuario}"/>
+            <td th:text="${tmp.numeroContacto}"/>
+<!--            <td>-->
+<!--                &lt;!&ndash; append employee id -> employee=${tmp.id} &ndash;&gt;-->
+<!--                <a th:href="@{/employees/showFormForUpdate(employeeId=${tmp.id})}"-->
+<!--                   class="btn btn-info btn-sm">-->
+<!--                    update-->
+<!--                </a>-->
+<!--            -->
+<!--                &lt;!&ndash; append employee id -> employee=${tmp.id} &ndash;&gt;-->
+<!--                <a th:href="@{/employees/showFormForDelete(employeeId=${tmp.id})}"-->
+<!--                   class="btn btn-danger btn-sm"-->
+<!--                   onclick="if (!(confirm('are you sure you want to delete this employee?'))) return false" >-->
+<!--                    delete-->
+<!--                </a>-->
+
+<!--            </td>-->
+        </tr>
+        </tbody>
+    </table>
+
+
+
+</body>
+</html>
